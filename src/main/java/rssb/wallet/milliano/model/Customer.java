@@ -51,8 +51,11 @@ public class Customer {
 
     @NotBlank(message = "Password is required")
     @Size(min = 5, max = 20, message = "Password must be between 5 and 20 characters")
-    @Column(name = "password")
+    @Transient
     private String password;
+
+    @Column(name = "password", columnDefinition = "LONGTEXT")
+    private String hashedPassword;
 
     @NotBlank(message = "Confirm Password is required")
     @Transient // Exclude from persistence

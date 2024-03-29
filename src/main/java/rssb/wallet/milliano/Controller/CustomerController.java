@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,9 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Operation(summary = "Create a new customer", description = "Create a new customer record with the provided details")
     @ApiResponses(value = {
@@ -40,12 +44,18 @@ public class CustomerController {
             // If passwords don't match, return a custom error message
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password and confirm password do not match");
         }
+        String hashedPassword = passwordEncoder.encode(customer.getPassword());
+        customer.setHashedPassword(hashedPassword);
 
+        Customer tempCustomer = customerRepository.findByNationalId(customer.getNationalId());
+        if(tempCustomer != null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("There is already a Customer profile associated with you National ID");
+        }
         try {
             Customer savedCustomer = customerRepository.save(customer);
             return ResponseEntity.status(201).body(savedCustomer);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while saving customer");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while saving customer" + e.getMessage());
         }
     }
 

@@ -11,4 +11,5 @@ import rssb.wallet.milliano.model.Customer;
  */
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+    Customer findByNationalId(String nationalId);
 }
