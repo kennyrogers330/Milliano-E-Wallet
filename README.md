@@ -47,3 +47,19 @@
 - **User Acceptance Testing (UAT):** Conduct final UAT sessions.
 - **Celebration and Recognition:** Recognize team efforts.
 
+# Spring Boot Application Details
+
+## API Documentation
+
+- **API Documentation Path:** /api-docs
+- **Swagger UI Path:** /swagger-ui/index.html
+
+## Main APIs
+
+### Customer Entity:
+
+- **CREATE : ** http://localhost:8080/customers/create
+- **READ : - ** http://localhost:8080/customers/customer/{customerId}
+          - ** http://localhost:8080/customers/  
+  
+
