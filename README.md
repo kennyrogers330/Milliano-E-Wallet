@@ -58,8 +58,20 @@
 
 ### Customer Entity:
 
-- **CREATE :** http://localhost:8080/customers/create
-- **READ :** http://localhost:8080/customers/customer/{customerId}
-- **READ ALL:** http://localhost:8080/customers/  
+- **CREATE :** http://localhost:8080/customers/create -METHOD: POST
+- **READ :** http://localhost:8080/customers/customer/{customerId} -METHOD: GET
+- **READ ALL:** http://localhost:8080/customers/ -METHOD: GET
+  
+### Wallet Entity:
+
+- **CREATE :** http://localhost:8080/wallets/createWallet -METHOD: POST
+- **READ :** http://localhost:8080/wallets/wallet/{walletId}
+- **READ ALL:** http://localhost:8080/wallets/
+
+### Wallet Transaction:
+
+- **CREATE :** http://localhost:8080/transactions/performTransaction -METHOD: POST
+- **READ :** http://localhost:8080/transactions/transaction/{id} -METHOD: GET
+- **READ ALL:** http://localhost:8080/transactions/ -METHOD: GET
   
 
