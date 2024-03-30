@@ -58,8 +58,8 @@
 
 ### Customer Entity:
 
-- **CREATE : ** http://localhost:8080/customers/create
-- **READ : - ** http://localhost:8080/customers/customer/{customerId}
-          - ** http://localhost:8080/customers/  
+- **CREATE :** http://localhost:8080/customers/create
+- **READ :** http://localhost:8080/customers/customer/{customerId}
+- **READ ALL:** http://localhost:8080/customers/  
   
 
