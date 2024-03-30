@@ -68,7 +68,7 @@
 - **READ :** http://localhost:8080/wallets/wallet/{walletId}
 - **READ ALL:** http://localhost:8080/wallets/
 
-### Wallet Transaction:
+### Transaction Entity:
 
 - **CREATE :** http://localhost:8080/transactions/performTransaction -METHOD: POST
 - **READ :** http://localhost:8080/transactions/transaction/{id} -METHOD: GET
